@@ -61,6 +61,10 @@ def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects):
         if int(numberOfEffects[2]) > 0:
             f.write(",\n \"effects\": {\n")
             effectBuilder(numberOfEffects[0], numberOfEffects[1], f)
+        f.write("\n\t\"glyph\": {")
+        f.write("\n\t\t\"tint\": \"" + tintHEX + "\",\n\t\t\"textureX\": 80,\n\t\t\"textureY\": 16\n\t},")
+        f.write("\n\t\"models\": [\n\t\t{\n\t\t\t\"location\": \"tetra:items/module/single/binding/socket/default\",")
+        f.write("\n\t\t\t\"tint\": \"" + tintHEX + "\"\n\t\t}\n\t]\n}")
 
     with open("generators/outputs/double_socket.json", 'w+') as f:
         f.close()
@@ -69,6 +73,17 @@ def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects):
     #     f.seek(0)
     with open("generators/outputs/double_socket.json", 'a') as f:
         f.write("{\n\t\"key\": \"" + modID + ':' + matID + '\",\n')
+        f.write("\"category\": \"misc\",\n")
+        f.write("\"durability\": " + duraCost + ",")
+        f.write("\"integrity\": " + integCost)
+        numberOfEffects = numEffects
+        if int(numberOfEffects[2]) > 0:
+            f.write(",\n \"effects\": {\n")
+            effectBuilder(numberOfEffects[0], numberOfEffects[1], f)
+        f.write("\n\t\"glyph\": {")
+        f.write("\n\t\t\"tint\": \"" + tintHEX + "\",\n\t\t\"textureX\": 80,\n\t\t\"textureY\": 16\n\t},")
+        f.write("\n\t\"models\": [\n\t\t{\n\t\t\t\"location\": \"tetra:items/module/double/binding/socket/default\",")
+        f.write("\n\t\t\t\"tint\": \"" + tintHEX + "\"\n\t\t}\n\t]\n}")
 
     with open("generators/outputs/sword_socket.json", 'w+') as f:
         f.close()
@@ -77,3 +92,14 @@ def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects):
     #     f.seek(0)
     with open("generators/outputs/sword_socket.json", 'a') as f:
         f.write("{\n\t\"key\": \"" + modID + ':' + matID + '\",\n')
+        f.write("\"category\": \"misc\",\n")
+        f.write("\"durability\": " + duraCost + ",")
+        f.write("\"integrity\": " + integCost)
+        numberOfEffects = numEffects
+        if int(numberOfEffects[2]) > 0:
+            f.write(",\n \"effects\": {\n")
+            effectBuilder(numberOfEffects[0], numberOfEffects[1], f)
+        f.write("\n\t\"glyph\": {")
+        f.write("\n\t\t\"tint\": \"" + tintHEX + "\",\n\t\t\"textureX\": 80,\n\t\t\"textureY\": 16\n\t},")
+        f.write("\n\t\"models\": [\n\t\t{\n\t\t\t\"location\": \"tetra:items/module/sword/binding/socket/default\",")
+        f.write("\n\t\t\t\"tint\": \"" + tintHEX + "\"\n\t\t}\n\t]\n}")

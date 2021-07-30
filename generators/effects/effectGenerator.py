@@ -24,3 +24,4 @@ def effect_json_gen(effectList, effectLevelList, f):
         f.write("\t\"" + effectList[0] + "\":" + str(effectLevelList[0]) + "\n")
         effectLevelList.pop(0)
         effectList.pop(0)
+    f.write("\t},")
