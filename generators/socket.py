@@ -21,8 +21,8 @@ def user_input_array():
     hasEffects = UserIn('Should the Socket have effects? [y/n]')
     numEffects = [0, 'null:null', 0]
     if hasEffects == 'y':
-        genEffects()
-        numEffects = genEffects
+        # genEffects()
+        numEffects = genEffects()
     if debug == 'y':
         modID = UserIn('mod ID')
         print(modID)
@@ -53,13 +53,14 @@ def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects):
     #     f.truncate(0)
     #     f.seek(0)
     with open("generators/outputs/single_socket.json", 'a') as f:
-        f.write("{\n\"" + modID + ':' + matID + ',\n')
+        f.write("{\n\t\"key\": \"" + modID + ':' + matID + '\",\n')
         f.write("\"category\": \"misc\",\n")
         f.write("\"durability\": " + duraCost + ",")
         f.write("\"integrity\": " + integCost)
-        if numEffects[3] > 0:
+        numberOfEffects = numEffects
+        if int(numberOfEffects[2]) > 0:
             f.write(",\n \"effects\": {\n")
-            effectBuilder(numEffects[0], numEffects[1], f)
+            effectBuilder(numberOfEffects[0], numberOfEffects[1], f)
 
     with open("generators/outputs/double_socket.json", 'w+') as f:
         f.close()
@@ -67,7 +68,7 @@ def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects):
     #     f.truncate(0)
     #     f.seek(0)
     with open("generators/outputs/double_socket.json", 'a') as f:
-        f.write("{\n\"" + modID + ':' + matID + ',\n')
+        f.write("{\n\t\"key\": \"" + modID + ':' + matID + '\",\n')
 
     with open("generators/outputs/sword_socket.json", 'w+') as f:
         f.close()
@@ -75,4 +76,4 @@ def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects):
     #     f.truncate(0)
     #     f.seek(0)
     with open("generators/outputs/sword_socket.json", 'a') as f:
-        f.write("{\n\"" + modID + ':' + matID + ',\n')
+        f.write("{\n\t\"key\": \"" + modID + ':' + matID + '\",\n')

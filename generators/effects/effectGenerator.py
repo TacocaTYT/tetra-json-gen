@@ -11,9 +11,9 @@ def effect_generator():
     effectLevelList = []
     while i > 0:
         effectName = UserIn('name of effect')
-        effectList.append(effectName + '|')
+        effectList.append(effectName)
         effectLevel = UserIn('What level is the applied effect')
-        if effectLevel == '':
+        if effectLevel == '' or effectLevel != int:
             effectLevel = '1'
         effectLevelList.append(int(effectLevel))
         i -= 1
@@ -21,6 +21,6 @@ def effect_generator():
 
 def effect_json_gen(effectList, effectLevelList, f):
     for i in effectLevelList:
-        f.write("\t\"" + effectList[0] + "\":" + effectLevelList[0] + "\n")
+        f.write("\t\"" + effectList[0] + "\":" + str(effectLevelList[0]) + "\n")
         effectLevelList.pop(0)
         effectList.pop(0)
