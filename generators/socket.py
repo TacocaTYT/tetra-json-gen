@@ -47,15 +47,17 @@ def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX):
     with open("generators/outputs/single_socket.json", 'r+') as f:
         f.truncate(0)
         f.seek(0)
+    with open("generators/outputs/single_socket.json", 'w') as f:
         f.write("{\n\"" + modID + ':' + matID + ',\n')
 
     with open("generators/outputs/double_socket.json", 'r+') as f:
         f.truncate(0)
         f.seek(0)
+    with open("generators/outputs/single_socket.json", 'w') as f:
+        f.write("{\n\"" + modID + ':' + matID + ',\n')
 
     with open("generators/outputs/sword_socket.json", 'r+') as f:
         f.truncate(0)
         f.seek(0)
-
-
-
+    with open("generators/outputs/single_socket.json", 'w') as f:
+        f.write("{\n\"" + modID + ':' + matID + ',\n')
