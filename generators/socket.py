@@ -44,16 +44,18 @@ def user_input_array():
     build_json(modID, matID, duraCost, integCost, xpCost, tintHEX)
 
 def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX):
-    f = open("outputs/single_socket.json", 'r+')
-    f.truncate(0)
-    f.seek(0)
-    f.write("{\n\"" + modID + '/' + matID + ',\n')
+    with open("generators/outputs/single_socket.json", 'r+') as f:
+        f.truncate(0)
+        f.seek(0)
+        f.write("{\n\"" + modID + ':' + matID + ',\n')
 
-    ff = open("outputs/double_socket.json", 'r+')
-    ff.truncate(0)
-    ff.seek(0)
+    with open("generators/outputs/double_socket.json", 'r+') as f:
+        f.truncate(0)
+        f.seek(0)
 
-    fff = ("outputs/sword_socket.json", 'r+')
-    fff.truncate(0)
-    fff.seek(0)
+    with open("generators/outputs/sword_socket.json", 'r+') as f:
+        f.truncate(0)
+        f.seek(0)
+
+
 
