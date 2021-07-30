@@ -17,4 +17,10 @@ def effect_generator():
             effectLevel = '1'
         effectLevelList.append(int(effectLevel))
         i -= 1
-    return effectList, effectLevelList
+    return effectList, effectLevelList, numEffects
+
+def effect_json_gen(effectList, effectLevelList, f):
+    for i in effectLevelList:
+        f.write("\t\"" + effectList[0] + "\":" + effectLevelList[0] + "\n")
+        effectLevelList.pop(0)
+        effectList.pop(0)
