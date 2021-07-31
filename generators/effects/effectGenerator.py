@@ -20,14 +20,6 @@ def effect_generator():
     return effectList, effectLevelList, numEffects
 
 def effect_json_gen(effectList, effectLevelList, f):
-    print(effectList)
-    print(effectLevelList)
-    #effectLevelListDummy = effectLevelList
-    #effectListDummy = effectList
     for i in range(len(effectLevelList)):
         f.write("\t\"" + effectList[i] + "\":" + str(effectLevelList[i]) + "\n")
-        # effectLevelListDummy.pop(0)
-        # effectListDummy.pop(0)
     f.write("\t},")
-    print(effectList)
-    print(effectLevelList)

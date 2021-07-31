@@ -8,10 +8,8 @@ def mm():
     ]
 
     master = Tk()
-
     mOS = StringVar(master)
-    mOS.set(OPTIONS[0]) # default value
-
+    mOS.set(OPTIONS[0])
     w = OptionMenu(master, mOS, *OPTIONS)
     w.pack()
 

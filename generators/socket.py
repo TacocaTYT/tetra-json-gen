@@ -2,16 +2,6 @@ import pymsgbox
 from generators.effects.effectGenerator import effect_generator as genEffects
 from generators.effects.effectGenerator import effect_json_gen as effectBuilder
 
-#-------------------------------
-'''
-modID = ""
-matID = ""
-duraCost = ""
-integCost = ""
-xpCost = ""
-tintHEX = ""
-'''
-#-------------------------------
 
 def UserIn(text):
     return pymsgbox.prompt(text, 'SOCKET DETAILS')
@@ -21,7 +11,6 @@ def user_input_array():
     hasEffects = UserIn('Should the Socket have effects? [y/n]')
     numEffects = [0, 'null:null', 0]
     if hasEffects == 'y':
-        # genEffects()
         numEffects = genEffects()
     if debug == 'y':
         modID = UserIn('Socket Material mod ID')
@@ -43,22 +32,17 @@ def user_input_array():
         integCost = UserIn('Integrity Gained/Lost? use a [-] to indicate lost')
         xpCost = UserIn('XP Cost in Levels')
         tintHEX = UserIn('Part Color as a HEX value (HEX = xxxxxx)')
-    #return modID, matID, duraCost, integCost, xpCost, tintHEX
     build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects)
 
 def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects):
     numberOfEffects = numEffects
     with open("generators/outputs/single_socket.json", 'w+') as f:
         f.close()
-    # with open("generators/outputs/single_socket.json", 'r+') as f:
-    #     f.truncate(0)
-    #     f.seek(0)
     with open("generators/outputs/single_socket.json", 'a') as f:
         f.write("{\n\t\"key\": \"" + modID + ':' + matID + '\",\n')
         f.write("\"category\": \"misc\",\n")
         f.write("\"durability\": " + duraCost + ",")
         f.write("\"integrity\": " + integCost)
-        # numberOfEffects = numEffects
         if int(numberOfEffects[2]) > 0:
             f.write(",\n \"effects\": {\n")
             effectBuilder(numberOfEffects[0], numberOfEffects[1], f)
@@ -69,15 +53,11 @@ def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects):
 
     with open("generators/outputs/double_socket.json", 'w+') as f:
         f.close()
-    # with open("generators/outputs/double_socket.json", 'r+') as f:
-    #     f.truncate(0)
-    #     f.seek(0)
     with open("generators/outputs/double_socket.json", 'a') as f:
         f.write("{\n\t\"key\": \"" + modID + ':' + matID + '\",\n')
         f.write("\"category\": \"misc\",\n")
         f.write("\"durability\": " + duraCost + ",")
         f.write("\"integrity\": " + integCost)
-        # numberOfEffects = numEffects
         if int(numberOfEffects[2]) > 0:
             f.write(",\n \"effects\": {\n")
             effectBuilder(numberOfEffects[0], numberOfEffects[1], f)
@@ -88,15 +68,11 @@ def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects):
 
     with open("generators/outputs/sword_socket.json", 'w+') as f:
         f.close()
-    # with open("generators/outputs/sword_socket.json", 'r+') as f:
-    #     f.truncate(0)
-    #     f.seek(0)
     with open("generators/outputs/sword_socket.json", 'a') as f:
         f.write("{\n\t\"key\": \"" + modID + ':' + matID + '\",\n')
         f.write("\"category\": \"misc\",\n")
         f.write("\"durability\": " + duraCost + ",")
         f.write("\"integrity\": " + integCost)
-        # numberOfEffects = numEffects
         if int(numberOfEffects[2]) > 0:
             f.write(",\n \"effects\": {\n")
             effectBuilder(numberOfEffects[0], numberOfEffects[1], f)
