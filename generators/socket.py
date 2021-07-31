@@ -24,29 +24,30 @@ def user_input_array():
         # genEffects()
         numEffects = genEffects()
     if debug == 'y':
-        modID = UserIn('mod ID')
+        modID = UserIn('Socket Material mod ID')
         print(modID)
-        matID = UserIn('Material name')
+        matID = UserIn('Socket Material name')
         print(matID)
-        duraCost = UserIn('Durability Gained/Lost')
+        duraCost = UserIn('Durability Gained/Lost? use a [-] to indicate lost')
         print(duraCost)
-        integCost = UserIn('Integrity Gained/Lost')
+        integCost = UserIn('Integrity Gained/Lost? use a [-] to indicate lost')
         print(integCost)
         xpCost = UserIn('XP Cost in Levels')
         print(xpCost)
         tintHEX = UserIn('Part Color as a HEX value (HEX = xxxxxx)')
         print(tintHEX)
     else:
-        modID = UserIn('mod ID')
-        matID = UserIn('Material name')
-        duraCost = UserIn('Durability Gained/Lost')
-        integCost = UserIn('Integrity Gained/Lost')
+        modID = UserIn('Socket Material mod ID')
+        matID = UserIn('Socket Material name')
+        duraCost = UserIn('Durability Gained/Lost? use a [-] to indicate lost')
+        integCost = UserIn('Integrity Gained/Lost? use a [-] to indicate lost')
         xpCost = UserIn('XP Cost in Levels')
         tintHEX = UserIn('Part Color as a HEX value (HEX = xxxxxx)')
     #return modID, matID, duraCost, integCost, xpCost, tintHEX
     build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects)
 
 def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects):
+    numberOfEffects = numEffects
     with open("generators/outputs/single_socket.json", 'w+') as f:
         f.close()
     # with open("generators/outputs/single_socket.json", 'r+') as f:
@@ -57,7 +58,7 @@ def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects):
         f.write("\"category\": \"misc\",\n")
         f.write("\"durability\": " + duraCost + ",")
         f.write("\"integrity\": " + integCost)
-        numberOfEffects = numEffects
+        # numberOfEffects = numEffects
         if int(numberOfEffects[2]) > 0:
             f.write(",\n \"effects\": {\n")
             effectBuilder(numberOfEffects[0], numberOfEffects[1], f)
@@ -76,7 +77,7 @@ def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects):
         f.write("\"category\": \"misc\",\n")
         f.write("\"durability\": " + duraCost + ",")
         f.write("\"integrity\": " + integCost)
-        numberOfEffects = numEffects
+        # numberOfEffects = numEffects
         if int(numberOfEffects[2]) > 0:
             f.write(",\n \"effects\": {\n")
             effectBuilder(numberOfEffects[0], numberOfEffects[1], f)
@@ -95,7 +96,7 @@ def build_json(modID, matID, duraCost, integCost, xpCost, tintHEX, numEffects):
         f.write("\"category\": \"misc\",\n")
         f.write("\"durability\": " + duraCost + ",")
         f.write("\"integrity\": " + integCost)
-        numberOfEffects = numEffects
+        # numberOfEffects = numEffects
         if int(numberOfEffects[2]) > 0:
             f.write(",\n \"effects\": {\n")
             effectBuilder(numberOfEffects[0], numberOfEffects[1], f)
